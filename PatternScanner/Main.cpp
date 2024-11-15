@@ -30,7 +30,6 @@ int main() {
     std::cout << "Search only in dynamic memory? (y/n): ";
     std::cin >> dynamicChoice;
     onlyDynamicMemory = (dynamicChoice == 'y' || dynamicChoice == 'Y');
-    std::cout << onlyDynamicMemory << std::endl;
     // Create the Scanner object with the given process ID
     Scanner scanner(processId);
 
