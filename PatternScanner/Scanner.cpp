@@ -61,14 +61,13 @@ bool Scanner::Parse(const std::string& pattern, std::vector<BYTE>& byte, std::st
     size_t len = pattern.length();
     for (size_t i = 0; i < len; ++i) {
         if (pattern[i] == '?') {
-            // Check for the "??" wildcard
+            // Treat single '?' or '??' as a wildcard
+            mask += '?';
+            byte.push_back(0x00); // Placeholder for wildcard
+
+            // Skip the second '?' if it's part of '??'
             if (i + 1 < len && pattern[i + 1] == '?') {
-                mask += '?';
-                byte.push_back(0x00); // Placeholder for wildcard
-                i++; // Skip the next '?' character
-            }
-            else {
-                return false; // If there's only one '?', it's an invalid pattern
+                i++;
             }
         }
         else if (std::isxdigit(pattern[i]) && i + 1 < len && std::isxdigit(pattern[i + 1])) {
@@ -90,20 +89,15 @@ bool Scanner::Parse(const std::string& pattern, std::vector<BYTE>& byte, std::st
     // Debug output for the parsed pattern and mask
 #ifdef DEBUG
     std::cout << "Parsed pattern bytes: ";
-#endif
-
-#ifdef DEBUG
     for (BYTE b : byte) {
         std::cout << std::hex << std::setw(2) << std::setfill('0') << (int)b << " ";
     }
-#endif
-
-#ifdef DEBUG
     std::cout << "\nParsed mask: " << mask << std::endl;
 #endif
 
     return true;
 }
+
 
 uintptr_t Scanner::Scan(const std::string& pattern, bool onlyDynamicMemory) {
     if (!hProcess) {
