@@ -4,11 +4,6 @@
 #include <string>
 #include <limits>
 
-#include "Scanner.h"
-#include <iostream>
-#include <string>
-#include <limits>
-
 int main() {
     DWORD processId;
     std::string pattern;
@@ -37,7 +32,8 @@ int main() {
     uintptr_t foundAddress = scanner.Scan(pattern, onlyDynamicMemory);
 
     // Output the result
-    if (foundAddress) {
+    if (foundAddress)
+    {
         std::cout << "Pattern found at address: 0x" << std::hex << foundAddress << std::endl;
     }
     else {
