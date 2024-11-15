@@ -95,7 +95,7 @@ With debugging enabled, logs will include:
 
 Contributions are welcome! If you encounter bugs, have feature suggestions, or want to improve the code, feel free to open an issue or submit a pull request.
 
-
+---
 
 ## Acknowledgments
 
