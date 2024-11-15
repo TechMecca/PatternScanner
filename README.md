@@ -8,7 +8,7 @@ A versatile tool to scan the memory of a target process for specific byte patter
 
 - **Cross-Architecture Support**: Works with both x86 (32-bit) and x64 (64-bit) processes.
 - **Dynamic Memory Filtering**: Option to scan only dynamically allocated memory regions (e.g., heap allocations).
-- **Wildcard Support**: Use `??` in patterns to represent unknown or variable bytes.
+- **Wildcard Support**: Use `??` and `?` in patterns to represent unknown or variable bytes.
 - **Debug Logging**: Enable detailed logs for memory scanning and troubleshooting.
 
 ---
